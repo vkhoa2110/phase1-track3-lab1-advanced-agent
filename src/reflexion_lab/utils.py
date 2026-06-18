@@ -12,7 +12,7 @@ def normalize_answer(text: str) -> str:
     return text
 
 def load_dataset(path: str | Path) -> list[QAExample]:
-    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    raw = json.loads(Path(path).read_text(encoding="utf-8-sig"))
     return [QAExample.model_validate(item) for item in raw]
 
 def save_jsonl(path: str | Path, records: Iterable[RunRecord]) -> None:
